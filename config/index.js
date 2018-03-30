@@ -3,14 +3,23 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+const target = 'http://rtapi.uat1.rs.com'
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {//配置本地接口请求地址
+      '/api-h5/**': {
+        target: target,
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '/api-h5': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

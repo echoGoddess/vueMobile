@@ -11,14 +11,15 @@
   </div>
 </template>
 <script>
-import { Header } from "mint-ui";
 
 export default {
-  data: {
-    content: "主页"
+  data: function () {
+    return {
+      content: '主页'
+    }
   },
   methods: {}
-};
+}
 </script>
 <style scoped>
 div {

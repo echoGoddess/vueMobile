@@ -7,39 +7,44 @@
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
     <h1>{{content}}</h1>
-    <form action="">
+    <div>
       <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
       <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-      <mt-button type="primary" size="large" @click.native="toHome">登陆</mt-button>
-    </form>
+      <mt-button  class="btnLogin" type="primary" size="large" @click.native="toHome">登陆</mt-button>
+    </div>
   </div>
 </template>
 <script>
-import { Header } from "mint-ui";
-import { Field } from "mint-ui";
-import { Button } from 'mint-ui';
+import LoginApi from '../../api/login.js'
 
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
-      content: "登陆页",
-      username:'',
-      password:'',
-    };
+      content: '登陆页',
+      username: '',
+      password: ''
+    }
   },
   methods: {
-    toHome() {
-      this.$router.push({ name: "Home" });
+    toHome () {
+      this.$router.push({ name: 'Home' })
     }
-  }
-};
+  },
+  beforeCreate () {}, // 开始加载
+  created () {}, // 结束加载
+  mounted () {
+    LoginApi.fetchData({ city: '上海市', id: 30 })
+  }, // dom渲染完成，请求数据，更新data
+  beforeDestroy () {}, // 销毁前
+  destroyed () {} // 销毁
+}
 </script>
 <style scoped>
 div {
   font-size: 30px;
 }
-button{
-  margin-top:20px;
+.btnLogin {
+  margin-top: 20px;
 }
 </style>
