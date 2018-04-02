@@ -1,12 +1,6 @@
 <template>
   <div class="login">
-    <mt-header fixed title="我是登陆页">
-      <router-link to="/" slot="left">
-        <mt-button icon="back">返回</mt-button>
-      </router-link>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
-    <h1>{{content}}</h1>
+    <h1>{{this.$route.name}}</h1>
     <div>
       <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
       <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
@@ -15,27 +9,38 @@
   </div>
 </template>
 <script>
-import LoginApi from '../../api/login.js'
+import { Indicator, Toast } from 'mint-ui'
+import LoginApi from '@/api/login.js'
+import RoutesName from '@/core/routerNames'
 
 export default {
   name: 'login',
   data () {
     return {
-      content: '登陆页',
       username: '',
       password: ''
     }
   },
   methods: {
     toHome () {
-      this.$router.push({ name: 'Home' })
+      Indicator.open()
+      LoginApi.fetchData({ city: '上海市', id: 30 })
+        .then(data => {
+          if (data && data.code === 200) {
+            this.$router.push({ name: RoutesName.ROUTE_HOME })
+          } else {
+            Toast(`登陆失败:${data.message}`)
+          }
+          Indicator.close()
+        })
+        .catch(() => {
+          Indicator.close()
+        })
     }
   },
   beforeCreate () {}, // 开始加载
   created () {}, // 结束加载
-  mounted () {
-    LoginApi.fetchData({ city: '上海市', id: 30 })
-  }, // dom渲染完成，请求数据，更新data
+  mounted () {}, // dom渲染完成，请求数据，更新data
   beforeDestroy () {}, // 销毁前
   destroyed () {} // 销毁
 }
@@ -45,6 +50,7 @@ div {
   font-size: 30px;
 }
 .btnLogin {
-  margin-top: 20px;
+  width: 90%;
+  margin: 20px auto;
 }
 </style>

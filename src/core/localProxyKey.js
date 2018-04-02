@@ -3,7 +3,7 @@ const all = {
 }
 
 if (location.origin.indexOf('localhost') === -1) {
-  for (let key of all) {
+  for (let key in all) {
     all[key] = ''
   }
 }
