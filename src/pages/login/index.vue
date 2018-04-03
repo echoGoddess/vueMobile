@@ -1,15 +1,15 @@
 <template>
   <div class="login">
     <h1>{{this.$route.name}}</h1>
-    <div>
-      <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
-      <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-      <mt-button  class="btnLogin" type="primary" size="large" @click.native="toHome">登陆</mt-button>
-    </div>
+    <group>
+      <x-input v-model="username" title="姓名" name="username" placeholder="请输入姓名" is-type="china-name"></x-input>
+      <x-input v-model="password" title="密码" type="password" name="password" placeholder="请输入密码"></x-input>
+    </group>
+    <x-button class="btnLogin"  @click.native="toHome" type="primary"> 登陆</x-button>
   </div>
 </template>
 <script>
-import { Indicator, Toast } from 'mint-ui'
+import { XInput,Group,XButton } from "vux";
 import LoginApi from '@/api/login.js'
 import RoutesName from '@/core/routerNames'
 
@@ -20,6 +20,11 @@ export default {
       username: '',
       password: ''
     }
+  },
+  components:{
+    XInput,
+    Group,
+    XButton
   },
   methods: {
     toHome () {
@@ -49,7 +54,7 @@ export default {
 </script>
 <style scoped>
 div {
-  font-size: 30px;
+  font-size: 24px;
 }
 .btnLogin {
   width: 90%;

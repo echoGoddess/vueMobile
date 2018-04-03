@@ -6,6 +6,9 @@ import 'mint-ui/lib/style.css'
 import App from './App'
 import router from './router'
 
+const FastClick = require('fastclick')
+FastClick.attach(document.body)
+
 Vue.use(Mint)
 Vue.config.productionTip = false
 
