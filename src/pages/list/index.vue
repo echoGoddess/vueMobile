@@ -15,45 +15,48 @@
   </div>
 </template>
 <script>
-import { MessageBox } from "mint-ui";
-import RouterNames from "@/core/routerNames";
+import { MessageBox } from 'mint-ui'
+import RouterNames from '@/core/routerNames'
 
 export default {
-  data: function() {
+  data: function () {
     return {
       selected: 1,
       tabs: [
-        { id: 1, name: "长裙" },
-        { id: 2, name: "短裙" },
-        { id: 3, name: "A字裙" },
-        { id: 4, name: "鱼尾裙" },
-        { id: 5, name: "雪纺裙" }
+        { id: 1, name: '长裙' },
+        { id: 2, name: '短裙' },
+        { id: 3, name: 'A字裙' },
+        { id: 4, name: '鱼尾裙' },
+        { id: 5, name: '雪纺裙' }
       ],
       lists: {
-        1: ["长裙1", "长裙2", "长裙3", "长裙4", "长裙5", "长裙6"],
-        2: ["短裙1", "短裙1", "短裙1", "短裙1", "短裙1", "短裙1"],
-        3: ["短裙1", "短裙1", "短裙1", "短裙1", "短裙1", "短裙1"],
-        4: ["短裙1", "短裙1", "短裙1", "短裙1", "短裙1", "短裙1"],
-        5: ["短裙1", "短裙1", "短裙1", "短裙1", "短裙1", "短裙1"]
+        1: ['长裙1', '长裙2', '长裙3', '长裙4', '长裙5', '长裙6'],
+        2: ['短裙1', '短裙1', '短裙1', '短裙1', '短裙1', '短裙1'],
+        3: ['短裙1', '短裙1', '短裙1', '短裙1', '短裙1', '短裙1'],
+        4: ['短裙1', '短裙1', '短裙1', '短裙1', '短裙1', '短裙1'],
+        5: ['短裙1', '短裙1', '短裙1', '短裙1', '短裙1', '短裙1']
       }
-    };
+    }
+  },
+  beforeCreate () {
+    document.title = this.$route.name
   },
   computed: {},
   methods: {
-    back() {
-      this.$router.back(-1);
+    back () {
+      this.$router.back(-1)
     },
-    detail(val) {
-      MessageBox("详情", `商品信息:${val}`).then(() => {
+    detail (val) {
+      MessageBox('详情', `商品信息:${val}`).then(() => {
         this.$router.push({
           name: RouterNames.ROUTE_DETAIL,
           params: { name: val }
-        });
-      });
+        })
+      })
     }
   },
-  created: function() {}
-};
+  created: function () {}
+}
 </script>
 <style scoped>
 .mint-navbar {

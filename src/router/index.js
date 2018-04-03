@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import RouterNames from '@/core/routerNames'
-import Home from '@/pages/home'
-import Login from '@/pages/login'
-import List from '@/pages/list'
-import Detail from '@/pages/detail'
 
 Vue.use(Router)
 
@@ -13,27 +9,27 @@ export default new Router({
     {
       path: '/',
       name: RouterNames.ROUTE_HOME,
-      component: Home
+      component: () => import('@/pages/home')
     },
     {
       path: '/home',
       name: RouterNames.ROUTE_HOME,
-      component: Home
+      component: () => import('@/pages/home')
     },
     {
       path: '/login',
       name: RouterNames.ROUTE_LOGIN,
-      component: Login
+      component: () => import('@/pages/login')
     },
     {
       path: '/list',
       name: RouterNames.ROUTE_LIST,
-      component: List
+      component: () => import('@/pages/list')
     },
     {
       path: '/detail/:name',
       name: RouterNames.ROUTE_DETAIL,
-      component: Detail
+      component: () => import('@/pages/detail')
     }
   ]
 })

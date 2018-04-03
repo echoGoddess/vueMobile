@@ -38,7 +38,9 @@ export default {
         })
     }
   },
-  beforeCreate () {}, // 开始加载
+  beforeCreate () {
+    document.title = this.$route.name
+  },
   created () {}, // 结束加载
   mounted () {}, // dom渲染完成，请求数据，更新data
   beforeDestroy () {}, // 销毁前

@@ -34,6 +34,9 @@ export default {
       Object.assign(this, swipers, tabs)
     }
   },
+  beforeCreate () {
+    document.title = this.$route.name
+  },
   created () {
     console.log('获取接口数据，初始化页面')
     // this.initData();

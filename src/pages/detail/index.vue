@@ -19,6 +19,9 @@ export default {
       this.$router.back(-1)
     }
   },
+  beforeCreate () {
+    document.title = this.$route.name
+  },
   created () {
 
   }
