@@ -6,40 +6,52 @@
       <x-input v-model="password" title="密码" type="password" name="password" placeholder="请输入密码"></x-input>
     </group>
     <x-button class="btnLogin"  @click.native="toHome" type="primary"> 登陆</x-button>
+     <div v-transfer-dom>
+      <loading :show="showLoading" text="请求中"></loading>
+    </div>
+     <div v-transfer-dom>
+      <alert v-model="showAlert" title="登陆失败"></alert>
+    </div>
   </div>
 </template>
 <script>
-import { XInput,Group,XButton } from "vux";
+import { XInput, Group, XButton, Loading, Alert, TransferDom } from 'vux'
 import LoginApi from '@/api/login.js'
 import RoutesName from '@/core/routerNames'
 
 export default {
-  name: 'login',
+  directives: {
+    TransferDom
+  },
+  components: {
+    XInput,
+    Group,
+    XButton,
+    Loading,
+    Alert
+  },
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      showLoading: false,
+      showAlert: false
     }
-  },
-  components:{
-    XInput,
-    Group,
-    XButton
   },
   methods: {
     toHome () {
-      Indicator.open()
+      this.showLoading = true
       LoginApi.fetchData({ city: '上海市', id: 30 })
         .then(data => {
           if (data && data.code === 200) {
             this.$router.push({ name: RoutesName.ROUTE_HOME })
           } else {
-            Toast(`登陆失败:${data.message}`)
+            this.showAlert = true
           }
-          Indicator.close()
+          this.showLoading = false
         })
         .catch(() => {
-          Indicator.close()
+          this.showLoading = false
         })
     }
   },

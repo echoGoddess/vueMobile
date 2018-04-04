@@ -12,55 +12,55 @@
   </div>
 </template>
 <script>
-import RoutesName from "@/core/routerNames";
-import { XHeader, Swiper } from "vux";
+import RoutesName from '@/core/routerNames'
+import { XHeader, Swiper } from 'vux'
 
 export default {
-  data: function() {
+  data: function () {
     return {
-      tabs: ["看案例", "找设计", "找装修", "挑尖货", "逛商场"],
+      tabs: ['看案例', '找设计', '找装修', '挑尖货', '逛商场'],
       swipeIndex: 0,
       swipes: [
         {
-          url: "javascript:",
-          img: "https://static.vux.li/demo/1.jpg",
-          title: "送你一朵fua"
+          url: 'javascript:',
+          img: 'https://static.vux.li/demo/1.jpg',
+          title: '送你一朵fua'
         },
         {
-          url: "javascript:",
-          img: "https://static.vux.li/demo/2.jpg",
-          title: "送你一辆车"
+          url: 'javascript:',
+          img: 'https://static.vux.li/demo/2.jpg',
+          title: '送你一辆车'
         },
         {
-          url: "javascript:",
-          img: "https://static.vux.li/demo/5.jpg",
-          title: "送你一次旅行",
-          fallbackImg: "https://static.vux.li/demo/3.jpg"
+          url: 'javascript:',
+          img: 'https://static.vux.li/demo/3.jpg',
+          title: '送你一次旅行',
+          fallbackImg: 'https://static.vux.li/demo/3.jpg'
         }
       ]
-    };
+    }
   },
   components: {
     XHeader,
     Swiper
   },
   methods: {
-    toList() {
-      this.$router.push({ name: RoutesName.ROUTE_LIST });
+    toList () {
+      this.$router.push({ name: RoutesName.ROUTE_LIST })
     },
-    initData(data) {
-      const { swipers, tabs } = data;
-      Object.assign(this, swipers, tabs);
+    initData (data) {
+      const { swipers, tabs } = data
+      Object.assign(this, swipers, tabs)
     }
   },
-  beforeCreate() {
-    document.title = this.$route.name;
+  beforeCreate () {
+    document.title = this.$route.name
   },
-  created() {
-    console.log("获取接口数据，初始化页面");
+  created () {
+    console.log('获取接口数据，初始化页面')
     // this.initData();
   }
-};
+}
 </script>
 <style scoped>
 div {

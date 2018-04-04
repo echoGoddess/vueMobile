@@ -15,7 +15,6 @@
     "fixLint": "eslint --ext .js,.vue src --fix"
   },
   "dependencies": {
-    "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vux": "^2.8.1",

@@ -1,14 +1,15 @@
 <template>
   <div>
-    <mt-header fixed :title="this.$route.name">
-      <mt-button slot="left" icon="back" @click="back">返回</mt-button>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
+    <x-header :title="this.$route.name"  @click="back" :right-options="{showMore:true}"></x-header>
     <div class="name">商品名称:{{name}}</div>
   </div>
 </template>
 <script>
+import { XHeader } from 'vux'
 export default {
+  components: {
+    XHeader
+  },
   data () {
     return {
       name: this.$route.params.name
@@ -22,13 +23,11 @@ export default {
   beforeCreate () {
     document.title = this.$route.name
   },
-  created () {
-
-  }
+  created () {}
 }
 </script>
 <style scoped>
-  .name{
-    margin-top:40px;
-  }
+.name {
+  margin-top: 40px;
+}
 </style>
