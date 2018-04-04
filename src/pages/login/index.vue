@@ -15,9 +15,9 @@
   </div>
 </template>
 <script>
-import { XInput, Group, XButton, Loading, Alert, TransferDom } from 'vux'
-import LoginApi from '@/api/login.js'
-import RoutesName from '@/core/routerNames'
+import { XInput, Group, XButton, Loading, Alert, TransferDom } from "vux";
+// import LoginApi from '@/api/login.js'
+import RoutesName from "@/core/routerNames";
 
 export default {
   directives: {
@@ -30,39 +30,46 @@ export default {
     Loading,
     Alert
   },
-  data () {
+  data() {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       showLoading: false,
       showAlert: false
-    }
+    };
   },
   methods: {
-    toHome () {
-      this.showLoading = true
-      LoginApi.fetchData({ city: '上海市', id: 30 })
-        .then(data => {
-          if (data && data.code === 200) {
-            this.$router.push({ name: RoutesName.ROUTE_HOME })
-          } else {
-            this.showAlert = true
-          }
-          this.showLoading = false
-        })
-        .catch(() => {
-          this.showLoading = false
-        })
-    }
+    toHome() {
+      // 模拟接口请求效果
+      this.showLoading = true;
+      this.timer = setTimeout(() => {
+        this.showLoading = false;
+        this.$router.push({ name: RoutesName.ROUTE_HOME });
+      }, 1000);
+      // LoginApi.fetchData({ city: "上海市", id: 30 })
+      //   .then(data => {
+      //     if (data && data.code === 200) {
+      //       this.$router.push({ name: RoutesName.ROUTE_HOME });
+      //     } else {
+      //       this.showAlert = true;
+      //     }
+      //     this.showLoading = false;
+      //   })
+      //   .catch(() => {
+      //     this.showLoading = false;
+      //   });
+    },
   },
-  beforeCreate () {
-    document.title = this.$route.name
+  beforeCreate() {
+    document.title = this.$route.name;
   },
-  created () {}, // 结束加载
-  mounted () {}, // dom渲染完成，请求数据，更新data
-  beforeDestroy () {}, // 销毁前
-  destroyed () {} // 销毁
-}
+  created() {}, // 结束加载
+  mounted() {}, // dom渲染完成，请求数据，更新data
+  beforeDestroy() {}, // 销毁前
+  destroyed() {
+    if (this.timer) this.timer = null;
+  } // 销毁
+};
 </script>
 <style scoped>
 div {
