@@ -8,7 +8,10 @@
         <span>{{item}}</span>
       </li>
     </ul>
-    <router-view />
+    <div class="flexDiv">
+      <span>flexi测试</span>
+      <span>flexi测试</span>
+    </div>
   </div>
 </template>
 <script>
@@ -62,7 +65,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 div {
   font-size: 24px;
 }
@@ -88,5 +91,15 @@ li i {
   background: pink;
   margin: 5px auto;
   border-radius: 50%;
+}
+.flexDiv {
+  font-size:0;
+  span {
+    display: inline-block;
+    width:375px;
+    line-height: 80px;
+    background:pink;
+    font-size:24px;
+  }
 }
 </style>
