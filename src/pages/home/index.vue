@@ -8,7 +8,10 @@
         <span>{{item}}</span>
       </li>
     </ul>
-    <router-view />
+    <div class="flexibleSpans">
+      <span class="btnFlexible">flexible测试</span>
+      <span class="btnFlexible">flexible测试</span>
+    </div>
   </div>
 </template>
 <script>
@@ -62,7 +65,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style  lang="less" scoped>
 div {
   font-size: 24px;
 }
@@ -88,5 +91,17 @@ li i {
   background: pink;
   margin: 5px auto;
   border-radius: 50%;
+}
+.flexibleSpans {
+  font-size: 0;
+  span {
+    font-size: 24px;
+    display: inline-block;
+    width: 375px;
+    height: 40px;
+    line-height: 40px;
+    background: pink;
+    box-shadow: 10px 10px 5px #888888;
+  }
 }
 </style>
