@@ -71,7 +71,7 @@ export default {
   } // 销毁
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 div {
   font-size: 24px;
 }
