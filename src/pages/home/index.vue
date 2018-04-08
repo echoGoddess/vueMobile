@@ -97,7 +97,7 @@ li i {
   span {
     font-size: 24px;
     display: inline-block;
-    width: 375px;
+    width: 187.5px;
     height: 40px;
     line-height: 40px;
     background: pink;
